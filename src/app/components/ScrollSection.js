@@ -42,12 +42,12 @@ export default function ScrollSection() {
                 </div>
                 <div className="scroll-section">
                     <h3>Open in Browser</h3>
-                    <p>Double-click <span>‘preview-and-install.html’ </span>to open the file in your web browser.</p>
+                    <p>Double-click <span>preview-and-install.html </span>to open the file in your web browser.</p>
                     <div><img src="./assets/open-in-browser.png" /></div>
                 </div>
                 <div className="scroll-section">
                     <h3>Copy Signature</h3>
-                    <p>Click the <span>'Copy HTML Signature' button</span>in your browser.</p>
+                    <p>Click the <span>Copy HTML Signature button</span>in your browser.</p>
                     <div><img src="./assets/copy-signature.png" /></div>
                 </div>
             </div>
