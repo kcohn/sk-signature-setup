@@ -26,7 +26,7 @@ export const steps = [
     },
     {
       title: "Update content & Save",
-      description: "Don’t forget to replace 'First & Last Name' with your actual name. Same goes for “Role/Title”.",
+      description: "Click 'Create new', name your signature, and paste the copied signature into the box. Replace 'First & Last Name' and 'Title/Role' with your details, then scroll down and click 'Save Changes.'",
       src: "/assets/gmail-settings.png",
       color: "#EBF4FC"
     },
