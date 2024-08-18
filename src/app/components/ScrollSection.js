@@ -47,7 +47,7 @@ export default function ScrollSection() {
                 </div>
                 <div className="scroll-section">
                     <h3>Copy Signature</h3>
-                    <p>Click the <span>"Copy HTML Signature" button</span>in your browser.</p>
+                    <p>Click the <span>'Copy HTML Signature' button</span>in your browser.</p>
                     <div><img src="./assets/copy-signature.png" /></div>
                 </div>
             </div>

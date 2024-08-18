@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import styles from './page.module.scss'
 import Hero from "./components/Hero";
 import ScrollSection from "./components/ScrollSection";
