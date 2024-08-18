@@ -18,7 +18,9 @@
         text-align: center;
         margin: 0px;
         font-size: 32px;
-        // color: #2F48C4;
+        a{
+          text-decoration: underline;
+        }
       }
       .body{
         display: flex;

@@ -5,7 +5,7 @@ import { useTransform, useScroll, motion } from 'framer-motion';
 
 import { useRef } from 'react';
 
-const Card = ({title, description, src, url, color, i, progress, range, targetScale}) => {
+const Card = ({title, description, src, link, color, i, progress, range, targetScale}) => {
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -22,7 +22,7 @@ const Card = ({title, description, src, url, color, i, progress, range, targetSc
       className={styles.card}
       style={{backgroundColor: color, scale, top:`calc(-10% + ${i * 25}px)`}} 
       >
-      <h2>{title}</h2>
+      <h2>{link ? <a className="link-title" href={link} target="_blank">{title}</a> : title}</h2>
       <div className={styles.body}>
         <div className={styles.description}>
           <p>{description}</p>
