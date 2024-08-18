@@ -2,32 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html, body, * {
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+  --backgroundColor: #2F48C4;
+  --primaryColor: #0aa1ff;
+  --primaryTextColor: #e6e6e6;
+
+  --headlineBig: clamp(2rem, 5vw, 6rem);
+  --headlineMedium: clamp(1rem, 2vw, 4rem);
+  --headlineSmall: clamp(0.8rem, 0.9vw, 1.6rem);
+  --spacing: clamp(0.9rem, 0.75vw, 1.3rem);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--backgroundColor);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.hero__header {
+  height: 100vh;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero__header h1 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: var(--headlineBig);
+  font-weight: 700;
+  color: #3CF8F8;
+}
+
+.hero__header p {
+  letter-spacing: 0.3rem;
+  font-size: var(--headlineSmall);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--primaryTextColor);
+}
+
+.hero__header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 16px;
+}
+
+.hero__header div p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: var(--headlineSmall);
+  color: var(--backgroundColor);
+  margin-bottom: 0;
+}
+
+.hero__header p {
+  margin-bottom: 2rem;
+}
+
+.hero__header img {
+  height: 40%;
+}
+
+.scroll-section-outer {
+  overflow: hidden;
+}
+
+.scroll-section-inner {
+  height: 100vh;
+  width: 400vw;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.scroll-section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-section h3 {
+  color: var(--primaryTextColor);
+  letter-spacing: var(--headlineMedium);
+  font-size: var(--headlineMedium);
+  text-transform: uppercase;
+}
+
+.footer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer span {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: var(--headlineBig);
+  color: var(--primaryTextColor);
 }
