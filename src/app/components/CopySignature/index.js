@@ -21,7 +21,7 @@ const Subtitle = styled.h3`
   color: #666;
   font-size: 14px;
   font-weight: normal;
-  margin: 8px 0;
+  margin: 0 0 24px 0;
 `;
 
 const Button = styled.button`
@@ -200,6 +200,10 @@ const CopySignature = ({ hostedImageUrl }) => {
       <EmailContainer>
         <EmailHeader>
           <Title>✉️ Signature Preview</Title>
+          <Subtitle>
+            After copying the signature, scroll down to continue with the rest
+            of the instructions.
+          </Subtitle>
           <Button onClick={() => handleCopy(false)}>
             <ButtonIcon
               width="18"

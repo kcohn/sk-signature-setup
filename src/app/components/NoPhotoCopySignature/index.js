@@ -202,8 +202,8 @@ const NoPhotoCopySignature = () => {
         <EmailHeader>
           <Title>✉️ Signature Preview</Title>
           <Subtitle>
-            Once you've copied the signature scroll down to read the rest of the
-            instructions.
+            After copying the signature, scroll down to continue with the rest
+            of the instructions.
           </Subtitle>
           <Button onClick={() => handleCopy(false)}>
             <ButtonIcon
