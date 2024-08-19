@@ -1,5 +1,11 @@
 export const steps = [
   {
+    title: "Copy Signature",
+    description: "Click the Copy HTML Signature button above",
+    src: "/assets/copy-signature.png",
+    color: "#EBF4FC",
+  },
+  {
     title: "Go to Gmail Settings",
     description:
       "Open Gmail and click the gear icon (Settings) in the top right corner. Then, select 'See all settings'.",

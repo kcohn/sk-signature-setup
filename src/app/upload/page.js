@@ -40,7 +40,7 @@ export default function Upload() {
           scrollYProgress={scrollYProgress}
         />
       )}
-      {/* <PhotoVersionSteps /> */}
+      <PhotoVersionSteps />
     </div>
   );
 }
