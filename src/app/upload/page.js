@@ -27,14 +27,20 @@ export default function Upload() {
   });
 
   return (
-    <div>
+    <div className="relative h-[200vh]">
       <UploadHero
         hostedImageUrl={hostedImageUrl}
         setHostedImageUrl={setHostedImageUrl}
+        scrollYProgress={scrollYProgress}
       />
 
-      {hostedImageUrl && <CopySignature hostedImageUrl={hostedImageUrl} />}
-      <PhotoVersionSteps />
+      {hostedImageUrl && (
+        <CopySignature
+          hostedImageUrl={hostedImageUrl}
+          scrollYProgress={scrollYProgress}
+        />
+      )}
+      {/* <PhotoVersionSteps /> */}
     </div>
   );
 }

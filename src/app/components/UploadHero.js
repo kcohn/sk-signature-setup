@@ -3,17 +3,21 @@ import { motion, useTransform } from "framer-motion";
 import UploadWidget from "./UploadWidget";
 import UploadButton from "./UploadButton";
 
-export default function UploadHero({ hostedImageUrl, setHostedImageUrl }) {
+export default function UploadHero({
+  hostedImageUrl,
+  setHostedImageUrl,
+  scrollYProgress,
+}) {
   const placeholderImageUrl =
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 
-  // const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-  // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
   return (
     <motion.div
-      // style={{ scale, rotate }}
-      className="upload__hero__header"
+      style={{ scale, rotate }}
+      className="upload__hero__header sticky top-0"
       variants={{
         hidden: { opacity: 0, y: 75 },
         visible: { opacity: 1, y: 0 },
