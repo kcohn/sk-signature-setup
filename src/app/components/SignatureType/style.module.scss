@@ -1,0 +1,31 @@
+.selectBoxContainer {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selectBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    margin: 10px;
+
+    h3 {
+        font-size: 48px;
+        font-weight: 600;
+        color: #2F48C4;
+    }
+
+    .highlightTextBox {
+        padding: 8px;
+        background-color: #3CF8F8;
+        border-radius: 10px;
+    }
+}

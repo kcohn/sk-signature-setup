@@ -36,19 +36,10 @@ export default function ScrollSection() {
         <div ref={triggerRef}>
             <div ref={sectionRef}className="scroll-section-inner">
                 <div className="scroll-section">
-                    <h3>Download File</h3>
-                    <p>Click the link above to download the html file to your computer.</p>
-                    <div><img src="./assets/download-file.png" /></div>
+                    <h3>Non Photo Version</h3>
                 </div>
                 <div className="scroll-section">
-                    <h3>Open in Browser</h3>
-                    <p>Double-click <span>preview-and-install.html </span>to open the file in your web browser.</p>
-                    <div><img src="./assets/open-in-browser.png" /></div>
-                </div>
-                <div className="scroll-section">
-                    <h3>Copy Signature</h3>
-                    <p>Click the <span>Copy HTML Signature button</span>in your browser.</p>
-                    <div><img src="./assets/copy-signature.png" /></div>
+                    <h3>Phot Version</h3>
                 </div>
             </div>
             </div>

@@ -1,10 +1,6 @@
 "use client";
-import styles from './page.module.scss'
 import Hero from "./components/Hero";
-import ScrollSection from "./components/ScrollSection";
-import Footer from "./components/Footer";
-import { steps } from './data';
-import Card from './components/Card/index';
+import ChooseSignatureType from './components/SignatureType/index';
 
 import { motion, useScroll } from 'framer-motion';
 import { useRef, useEffect } from 'react';
@@ -29,15 +25,8 @@ export default function Home() {
 
   return (
     <div>
-      <Hero />
-      <main ref={container} className={styles.main}>
-      {
-        steps.map( (step, index) => {
-          const targetScale = 1 - ( (steps.length - index) * 0.05);
-          return <Card key={`s_${index}`} i={index} {...step} progress={scrollYProgress} range={[index * .25, 1]} targetScale={targetScale}/>
-        })
-      }
-      </main>
+      <Hero scrollYProgress={scrollYProgress} />
+      <ChooseSignatureType scrollYProgress={scrollYProgress} />
     </div>
   );
 }

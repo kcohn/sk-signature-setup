@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Stable Kernel - Internal Design (Preview)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"/>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADSSURBVHgB7ZXhEYIwDIUfTuAIHYERHMENHEE2gA10BDdwBEdwBEfADWqjKYZaaYuWHxzfXe5KSfK4l14BFgIUJjQyssIEaI6bCYXfKbmX7dstbFQYz95E6/TrFo1Y10jnIOqP8AgQlXi+IM6yNee6DngFCOlhaC7KyS3Fu68CbiF5uvU03+Ht9xWfHzIoYJFeyrnUYv+El00YI0A0IufMEXPiogWIDfpnu+U9/EuAUCwSGnxPQN5FRUSR9foekatt0xSBFJ59s1922QXm8T9YGOQBwBhhv7bc+QcAAAAASUVORK5CYII=">
+<style>body{font-family:'Helvetica','Arial',sans-serif;margin:0;padding:32px 16px;background:#fff;}h2{color:#111;font-size:24px;font-weight:bold;margin:0;}h3{color:#666;font-size:14px;font-weight:normal;margin:8px 0;}.btn{display:inline-block;vertical-align:middle;border:0;padding:12px 24px;color:#fff;border:1px solid #000;background:#000;font-weight:bold;font-size:16px;border-radius:50px;cursor:pointer;}.btn--alt{color:#000;background:#fff;margin-left:24px;border:1px solid #000;}.btn:hover{background:#222;border:1px solid #222;}.btn--alt:hover{color:#555;border:1px solid #555;background:#fff;}.btn-icon,.btn-txt{display:inline-block;vertical-align:middle;}.btn-icon{margin-right:4px;}.email{max-width:1100px;margin:auto;}.email__creative{display:flex;justify-content:space-around;margin:30px 0 100px;}.email__frame{border:0;background:#fff;}.email__frame--small{width:320px;height:568px;}.email__frame--large{width:700px;height:700px;}.email__header{background:#fff;border-radius:4px;padding:16px;}.preview{margin-top:8px;width:100%;border-spacing:0px 8px;}.preview__text{font-size:14px;}.preview__text--subject{color:#202124;}.preview__text--preheader{color:#5f6368;opacity:0.7;}.preview__text--warning{background:rgb(253,246,178);color:rgb(142,75,16);border-radius:4px;padding:12px;}.icon,.txt{display:inline-block;vertical-align:middle;}.icon{margin-right:4px;fill:rgb(142,75,16);}.signature{border-radius:8px;margin:8px 0;box-shadow:0px 2.8px 2.2px rgba(0,0,0,0.02),0px 6.7px 5.3px rgba(0,0,0,0.028),0px 12.5px 10px rgba(0,0,0,0.035),0px 22.3px 17.9px rgba(0,0,0,0.042),0px 41.8px 33.4px rgba(0,0,0,0.05),0px 100px 80px rgba(0,0,0,0.07);}.email__link{color:#007be5;}.signature__header{background:#EEE;color:#111;font-size:14px;padding:12px;border-top-left-radius:8px;border-top-right-radius:8px;font-family:'Arial',sans-serif;}.signature__body{border:1px solid rgba(0,0,0,0.02);display:flex;flex-direction:column;padding:24px;border-bottom-left-radius:8px;border-bottom-right-radius:8px;}
+</style>
+</head>
+<body><div class="emails"><div class="email"><div class="email__header"><h2>✉️ SK Email Signature Vertical</h2><p class="preview"><a href="https://docs.hypermatic.com/emailify/signatures/" target="_blank" class="email__link">Install Email Signature (Instructions)</a></p>
+<table class="preview"><tr class="preview__row"><td class="preview__text preview__text--subject"> <button class="btn" id="btn_1"> <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" fill-rule="evenodd" clip-rule="evenodd"><path d="M20 24H0V2h3C4.229 2 5.18.916 6 0h8c.82.916 1.771 2 3 2h3v9h-2V4h-4l-2 2H8.102L6 4H2v18h16v-5h2v7zm-10-4H4v-1h6v1zm0-2H4v-1h6v1zm6-5h8v2h-8v3l-5-4 5-4v3zm-6 3H4v-1h6v1zm0-2H4v-1h6v1zm0-2H4v-1h6v1zm0-2H4V9h6v1zM9 3a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/></svg> <span id="btn_1_text" class="btn-txt" id="">Copy HTML Signature</span></button> <button class="btn btn--alt" id="btn_1_html"> <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 12v1.649l3.229 1.351-3.229 1.347v1.653l5-2.201v-1.599l-5-2.2zm-7 2.201v1.599l5 2.2v-1.653l-3.229-1.347 3.229-1.351v-1.649l-5 2.201zm5.362-12.201c4.156 0 2.638 6 2.638 6s6-1.65 6 2.457v11.543h-16v-20h7.362zm.827-2h-10.189v24h20v-14.386c0-2.391-6.648-9.614-9.811-9.614z"/></svg> <span id="btn_1_text_html" class="btn-txt" id="">Copy HTML Signature (Raw Code)</span></button>
+</td></tr></table></div><div class="signature"><div class="signature__header">Email Signature Preview</div><div id="email_1" class="signature__body">
+<table bgcolor="transparent" border="0" cellpadding="0" cellspacing="0" width="100%" style="background:transparent;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;"><tr><td align="left" style="padding:0;"><div class="emailify" style="mso-line-height-rule:exactly;mso-hyphenate:none;word-spacing:normal;"><div class="bg " lang="en" dir="auto">
+<!--[if mso | IE]>
+<table align="left" border="0" cellpadding="0" cellspacing="0" class="r-outlook -outlook pr-16-outlook pl-16-outlook -outlook" role="presentation" style="width:600px;" width="600"><tr><td style="line-height:0;font-size:0;mso-line-height-rule:exactly;">
+<![endif]--><div class="r pr-16 pl-16" style="background:#fafafa;background-color:#fafafa;margin:0px;max-width:600px;">
+<table align="left" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#fafafa;background-color:#fafafa;width:100%;"><tbody><tr><td style="border:none;direction:ltr;font-size:0;padding:16px 0px 16px 0px;text-align:left;">
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class style="width:600px;">
+<![endif]--><div class="pc100 ogf" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+<!--[if mso | IE]>
+<table border="0" cellpadding="0" cellspacing="0" role="presentation"><tr><td style="vertical-align:middle;width:600px;">
+<![endif]--><div class="pc100 ogf c" style="font-size:0;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100.0000%;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"><tbody><tr><td style="border:none;vertical-align:middle;padding:0px 16px 0px 16px;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%"><tbody><tr><td align="left" class="i m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0;"><tbody><tr><td style="width:64px;"> <img alt src="stable-kernel-email-signature/img/62058fda6ac01e7b87864ea2c61688b7.png" style="border:0;border-radius:100px 100px 100px 100px;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="64" height="auto">
+</td></tr></tbody></table>
+</td></tr><tr><td align="left" class="x m" style="font-size:0;padding-bottom:4px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:30px;mso-ansi-font-size:20px;"><span style="font-size:20px;font-family:'IBM Plex Sans','Helvetica',sans-serif;font-weight:700;color:#2f48c4;line-height:145%;mso-line-height-alt:30px;mso-ansi-font-size:20px;">First Name Last Name</span></p></div>
+</td></tr><tr><td align="left" class="x m" style="font-size:0;padding-bottom:4px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:16px;mso-ansi-font-size:14px;"><span style="font-size:13px;font-family:'Inter','Arial',sans-serif;font-weight:400;color:#777777;line-height:115%;mso-line-height-alt:16px;mso-ansi-font-size:14px;">Title/Role</span></p></div>
+</td></tr><tr><td class="s m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;" aria-hidden="true"><div style="height:12px;line-height:12px;">&#8202;</div>
+</td></tr><tr><td align="center" class="d m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;"><p style="border-top:solid 1px #2f48c4;font-size:1px;margin:0px;width:100%;"></p>
+<!--[if mso | IE]>
+<table align="left" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #2f48c4;font-size:1px;margin:0px;width:568px;" role="presentation" width="568px"><tr><td style="height:0;line-height:0;"> &nbsp;
+</td></tr></table>
+<![endif]-->
+</td></tr><tr><td class="s m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;" aria-hidden="true"><div style="height:12px;line-height:12px;">&#8202;</div>
+</td></tr><tr><td align="left" class="i m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0;"><tbody><tr><td style="width:140px;"> <img alt src="https://e.hypermatic.com/s_a40d54e52ad58232506a8bb57156d8c2.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="140" height="auto">
+</td></tr></tbody></table>
+</td></tr><tr><td class="s m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;" aria-hidden="true"><div style="height:8px;line-height:8px;">&#8202;</div>
+</td></tr><tr><td align="left" class="x m" style="font-size:0;padding-bottom:4px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:18px;mso-ansi-font-size:12px;"><span style="font-size:12px;font-family:'IBM Plex Sans','Helvetica',sans-serif;font-weight:500;color:#2f48c4;line-height:142%;mso-line-height-alt:18px;mso-ansi-font-size:12px;"><a href="tel:+18446737225" style="color:#2f48c4;text-decoration:initial;" target="_blank">844-673-7225</a></span></p></div>
+</td></tr><tr><td class="s m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;" aria-hidden="true"><div style="height:4px;line-height:4px;">&#8202;</div>
+</td></tr><tr><td align="left" class="x m" style="font-size:0;padding-bottom:4px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:16px;mso-ansi-font-size:12px;"><span style="font-size:12px;font-family:'IBM Plex Sans','Helvetica',sans-serif;font-weight:500;color:#2f48c4;line-height:133%;mso-line-height-alt:16px;mso-ansi-font-size:12px;">www.stablekernel.com</span></p></div>
+</td></tr><tr><td class="s m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;" aria-hidden="true"><div style="height:4px;line-height:4px;">&#8202;</div>
+</td></tr><tr><td align="left" class="x m" style="font-size:0;padding-bottom:4px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:16px;mso-ansi-font-size:12px;"><span style="font-size:12px;font-family:'IBM Plex Sans','Helvetica',sans-serif;font-weight:500;color:#2f48c4;line-height:133%;mso-line-height-alt:16px;mso-ansi-font-size:12px;">746 Willoughby Way NE STE 200</span></p><p style="Margin:0;mso-line-height-alt:16px;mso-ansi-font-size:12px;"><span style="font-size:12px;font-family:'IBM Plex Sans','Helvetica',sans-serif;font-weight:500;color:#2f48c4;line-height:133%;mso-line-height-alt:16px;mso-ansi-font-size:12px;">Atlanta, GA 30312</span></p></div>
+</td></tr><tr><td class="s m" style="font-size:0;padding:0;padding-bottom:4px;word-break:break-word;" aria-hidden="true"><div style="height:12px;line-height:12px;">&#8202;</div>
+</td></tr><tr><td align="left" class="i fw-1" style="font-size:0;padding:0;padding-bottom:0;word-break:break-word;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0;" class="fwm"><tbody><tr><td style="width:331px;" class="fwm"> <img alt src="https://e.hypermatic.com/s_953040b520f9843830d03971a4c5917f.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="331" height="auto">
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+</td></tr></tbody></table></div>
+<!--[if mso | IE]>
+</td></tr></table>
+<![endif]--></div>
+<!--[if mso | IE]>
+</td></tr></table>
+<![endif]-->
+</td></tr></tbody></table></div>
+<!--[if mso | IE]>
+</td></tr></table>
+<![endif]--></div></div>
+</td></tr></table></div></div></div></div><script>
+      var userAgent = window.navigator.userAgent;
+      var isWindows = /'Win32|Win64|Windows|Windows NT|WinCE/gi.test(userAgent);
+      if(isWindows) {
+        var emails = document.getElementsByClassName('email__frame');
+        for (var i = 0; i < emails.length; ++i) {
+          var email = emails[i];
+          var w = parseInt(email.style.width.replace('px', ''));
+          email.style.width = w + 18 + 'px';
+        }
+      }
+              var btn_1 = document.getElementById("btn_1");
+               var btn_1_text = document.getElementById("btn_1_text");
+              btn_1.onclick = function() {
+
+                var contentToCopy = document.getElementById('email_1');
+                var range = document.createRange();
+                range.selectNodeContents(contentToCopy);
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand('copy');
+
+                selection.removeAllRanges();
+
+                btn_1_text.innerText = "Copied HTML to your clipboard!";
+                setTimeout(function() {
+                  btn_1_text.innerText = "Copy HTML Signature";
+                }, 5000);
+              };
+            var btn_1_html = document.getElementById("btn_1_html");
+               var btn_1_text_html = document.getElementById("btn_1_text_html");
+              btn_1_html.onclick = function() {
+                var element = document.getElementById('email_1');
+                var elementHtml = element.innerHTML;
+
+                const el = document.createElement('textarea');
+                el.value = elementHtml;
+                el.setAttribute('readonly', '');
+                el.style.position = 'absolute';
+                el.style.left = '-9999px';
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+
+                btn_1_text_html.innerText = "Copied HTML (Raw Code) to your clipboard!";
+                setTimeout(function() {
+                  btn_1_text_html.innerText = "Copy HTML Signature (Raw Code)";
+                }, 5000);
+              };
+</script>
+</body>
+</html>

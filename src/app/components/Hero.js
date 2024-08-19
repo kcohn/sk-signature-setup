@@ -1,9 +1,11 @@
-import { motion } from "framer-motion";
-import { Reveal } from "./utils/Reveal";
+import { motion, useTransform } from "framer-motion";
 
-export default function Hero() {
+export default function Hero({scrollYProgress}) {
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+    const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
     return (
         <motion.div
+            style={{ scale, rotate }}
             className="hero__header"
             variants={{
                 hidden: { opacity: 0, y: 75},
@@ -16,7 +18,7 @@ export default function Hero() {
                 delay: 0.25,
             }}
         >
-            <div><p>Setup Instructions</p></div>
+            <div className="hero__header__pill"><p>Setup Instructions</p></div>
             <h1>Sign Off with Impact,</h1>
             <p>a few clicks to craft the perfect signature for every email.</p>
             <img src="/assets/signature.png" alt="Signature" /> 
