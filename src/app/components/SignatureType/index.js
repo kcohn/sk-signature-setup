@@ -92,7 +92,9 @@ const TiltCard = ({ children }) => {
           }}
           className="text-center text-2xl font-bold"
         >
-          <div className="bg-sky-400 py-2 px-4 rounded-md">{children}</div>
+          <div className="highlighted-text py-2 px-4 rounded-md">
+            {children}
+          </div>
         </p>
 
         <FiMousePointer
